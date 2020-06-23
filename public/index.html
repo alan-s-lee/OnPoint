@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src * data: blob: ws: wss: gap://ready file://*;
+    style-src * 'unsafe-inline'; 
+    script-src * 'unsafe-inline' 'unsafe-eval';
+    connect-src * ws: wss:;" />
+    <title>Reaching Experiment</title>
+
+    <link rel="stylesheet" href="/static/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/static/style.css" type="text/css" />
+
+    <!-- update the version number as needed -->
+    <script src="/__/firebase/6.6.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/6.6.1/firebase-auth.js"></script>
+    <script src="/__/firebase/6.6.1/firebase-database.js"></script>
+    <script src="/__/firebase/6.6.1/firebase-firestore.js"></script>
+    <script src="/__/firebase/6.6.1/firebase-messaging.js"></script>
+    <script src="/__/firebase/6.6.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script src="/__/firebase/init.js"></script>
+    
+    <!-- <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+  </head>
+  <body>
+   <main class="container">
+     <!-- Consent Page-->
+    <div id="container-consent">
+      <div id="consent">
+          <h1><b><u>Welcome</u></b></h1>
+          <h2>but first, we need your consent to proceed...</h2> 
+          <hr />
+          <div class="legal well">
+              <p> 
+              We would like to invite you the take part in the following study named "Online Reaching Experiment: Aim For The Target!"
+              </p>
+              <p>
+                This will take approximately 20 minutes, and you will be compensated $2.65 upon completion. <br>
+                Please understand that we <em>reserve the right to not compensate entries</em> that fail to follow instructions during reaches.
+                <br>  
+              </p>
+              <div id="consentForm">
+                  <iframe frameborder="1" id="consentForm" src="https://drive.google.com/file/d/1_jkO8vZMrpOrZMgEhpZuFgGcBjGE72Yg/preview"></iframe>
+              </div>
+              <button type="button" class="btn btn-default btn-sm" onClick="window.print();">
+              <span class="glyphicon glyphicon-print"></span> Print a copy of this
+              </button>
+          </div>
+          <hr />
+          <h4>If you agree and consent to these terms, please click "I Agree" to continue. Otherwise, please exit the page and return this HIT.</h4>
+          <br />
+          <center>
+              <button type="button" class="btn btn-danger btn-lg" onClick="return show('final-page', 'container-consent');">
+              <span class="glyphicon glyphicon-ban-circle"></span> I do <u><b>NOT</b></u> consent to these terms.
+              </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-instructions1', 'container-consent');">
+              <span class="glyphicon glyphicon-ok"></span> I Agree 
+              </button>
+          </center>
+      </div>
+    </div>
+     
+    <!-- Instruction Page 1-->
+    <div id="container-instructions1" style="display:none">
+        <h1>Online Reaching Experiment: Aim For The Target!</h1>
+        <hr>
+      <div class="instructions well">
+            <p>
+                You will be controlling a white dot with your trackpad. The white dot will sometimes be visible, and other times hidden. Even when you don't see the white dot, the game will always be tracking its position.
+            </p>
+            <p> 
+                For this experiment, please use a <b>trackpad</b> to complete the task. Below is a video clip of an example participant completing the task using a trackpad.
+            </p>
+            <div class="row">
+                <!--
+                <div class="columnA">
+                    <video controls autoplay loop muted src="" alt="User demonstration with mouse" style="width:100%"></video>
+                </div>
+                -->
+                
+                <div>
+                    <center>
+                    <video controls autoplay loop muted src="images/demo.MOV" alt="User demonstration with trackpad" style="width:100%"></video>
+                    </center>
+                </div>
+            </div>
+            <p>
+                <b><em>NOTE:</em></b> There are attention checks, so be sure to read their instructions thoroughly! Failing these checks will result in an incomplete HIT!
+            </p>
+          <script type="text/javascript">
+          //console.log(psiTurk.getInstructionIndicator())
+          </script>
+      </div>
+      <hr>
+      <center>
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-consent', 'container-instructions1');">
+            <span class="glyphicon glyphicon-arrow-left"></span> Back 
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-instructions2', 'container-instructions1');">
+            <span class="glyphicon glyphicon-arrow-right"></span> Next
+            </button>
+        </center>
+    </div>
+    
+    <!-- Instruction Page 2
+        **TODO** Update the code in the instructions if necessary-->
+    <div id="container-instructions2" style="display:none">
+        <h1>What To Do</h1>
+        <hr>
+      <div class="instructions well">
+            <p>
+                There are two simple steps:
+            </p>
+            <p style="color:red">
+                1. Bring the white dot to the center of your screen. The white dot will initially be hidden, but once you get within a certain distance from the center it will be displayed.
+            </p>
+            <p style="color:red">
+                2. Once the blue dot (your target) appears, slice through it <em>FAST</em> with the white dot (visible or hidden).
+            </p>
+            <p style="color:red">
+                <b>PLEASE READ:</b> After several reaches, the white dot will stop following the direction of where you reach, and instead move on its own. When this happens, <b><em>IGNORE</em></b> the white dot and continue aiming your reaches <b>directly</b> to the target. 
+                Throughout the entire experiment, you should be aiming <em>DIRECTLY</em> to the target. [Type "rice" in the next page to indicate that you have read this].
+            </p>
+            <div class="row">
+                <center>
+                    <div class="columnB2">
+                        <video controls autoplay loop muted src="images/finding_center.mov" alt="Game image" style="width:100%"></video>
+                    </div>
+                </center>
+            </div>
+          <script type="text/javascript">
+          //console.log(psiTurk.getInstructionIndicator())
+          </script>
+      </div>
+      <hr>
+      <center>
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-instructions1', 'container-instructions2');">
+            <span class="glyphicon glyphicon-arrow-left"></span> Back 
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-info', 'container-instructions2');">
+            <span class="glyphicon glyphicon-arrow-right"></span> Next
+            </button>
+        </center>
+    </div>
+
+    <!-- Initial Form for basic information 
+    **TODO** Update questions accordingly to what kinds of information you require-->
+    <div id="container-info" style="display:none">
+      <!-- CHANGE INDEX.JS CHECKINFO() IF MODIFIED -->
+      <h1>Basic Information</h1>
+      <hr>
+
+      <form id='infoform'>
+          <div class="row question">
+
+              <div class="questions" id="email">
+                  MTURK WorkerID: 
+                  <input id="email-input" type="text" name="email" value="">
+              </div>
+            
+              <div class="questions" id="age">
+                  Age: 
+                  <input id="age" type="text" name="age" value="">
+              </div>
+
+              <div class="questions" id="sex">
+                  Gender: 
+                  <select id="gender" name="gender">
+                      <option value=""></option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Genderqueer/Non-Binary</option>
+                  </select>
+              </div>
+
+              <div class="questions" id="handedness">
+                    Right or left handed: 
+                <select id="hand" name="hand">
+                    <option value=""></option>
+                    <option value="righth">Right</option>
+                    <option value="lefth">Left</option>
+                    <option value="bothh">Ambidextrous</option>
+                </select>
+              </div>
+
+            <div class="questions" id="mouseQ">
+                What kind of mouse are you using (Please only use trackpads): 
+                <select id="mousetype" name="mousetype">
+                    <option value="">
+                    <option value="optical">Optical mouse (standard mouse)</option>
+                    <option value="trackpad">Trackpad mouse</option>
+                    <option value="trackball">Trackball mouse</option>
+                </select>
+            </div>
+
+            <div class="questions" id="returner">
+                Have you done our experiments before? 
+                <select id="repeat" name="repeater">
+                    <option value=""></option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="idk">I don't remember</option>
+                </select>
+            </div>
+
+            <div class="questions" id="startcode">
+                What's the code from the last page (Reread the instructions page if you don't know): 
+                <input id="age" type="text" name="age" value="">
+            </div>
+
+            <hr>
+
+            <p>
+                The following information is requested by the National Institute of Health. You are not <em>required</em>, but are encouraged to complete these.
+            </p>
+            
+            <div class="questions" id="ethnicity">
+                Ethnic Origin:  
+                <select id="ethnic" name="ethnic">
+                    <option value="">
+                    <option value="hispanic">Hispanic or Latino</option>
+                    <option value="non-hispanic">Not Hispanic or Latino</option>
+                </select>
+            </div>
+
+            <div class="questions" id="racial origin">
+                Racial Origin:  
+                <select id="race" name="race">
+                    <option value="">
+                    <option value="indian/native">American Indian or Alaskan Native</option>
+                    <option value="asian">Asian</option>
+                    <option value="african-american">Black or African American</option>
+                    <option value="pacific-islander">Native Hawaiian or Other Pacific Islander</option>
+                    <option value="white">White or Caucasian</option>
+                    <option value="multiple">More than one race</option>
+                    <option value="unkown">Unknown</option>
+                </select>
+            </div>
+
+          </div>
+        </form>
+        <hr>
+        <center>
+            <!-- <h1><b><em>Please enter fullscreen mode before you begin.</em></b></h1> //only for safari
+            <hr> -->
+            <button type="button" id="back" value="back" class="btn btn-primary btn-lg previous" onClick="show('container-instructions2', 'container-info');">
+                <span class="glyphicon glyphicon-arrow-left"></span> Back 
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="begin" value="next" class="btn btn-primary btn-lg continue" onClick="checkInfo();">
+                Begin Experiment <span class="glyphicon glyphicon-arrow-right"></span>
+            </button>
+        </center>
+    </div>
+
+    <!-- Game page -->
+    <div id="container-exp" style="display:none">
+    </div>
+
+    <!-- Thank you page 
+        **TODO** Update the completion code if necessary-->
+    <div id="container-not-an-ad" style="display:none">
+            <div class="media-left pull-left" href="#">
+                    <!-- REPLACE THE LOGO HERE WITH YOUR  UNIVERSITY, LAB, or COMPANY -->
+                    <img id="adlogo" src="images/university.png" alt="Lab Logo" />
+        </div>
+        <div class="media-body">
+            <h1>Thanks for your participation!</h1>
+            <hr />
+
+            <h2>Now just one more question and you're done!</h2>
+            
+            <form id="feedbackForm">
+                <!-- This question is currently not employed.
+                <div class="question" id="contact">
+                    When the white dot was not under your control, did it touch the target?
+                    <select id="contactq" name="contact">
+                        <option value="">
+                        <option value="yes">Yes, the white dot hit/touched the target</option>
+                        <option value="no">No, the white dot never came in contact with the target</option>
+                    </select>
+                </div>
+                -->
+
+                <div class="question" id="feedback">
+                    Let us know if you had any issues with this experiment! 
+                    <input id="feedback" type="text" name="feedback" value="">
+                </div>
+            </form>
+            <center>
+                <!-- <h1><b><em>Please enter fullscreen mode before you begin.</em></b></h1> //only for safari
+                <hr> -->
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" id="end" value="final" onClick="saveFeedback();">
+                    Submit 
+                </button>
+            </center>
+            <h2>If you do not receive compensation in 5 business days please email ivrylab@gmail.com.</h2>
+            <h2>Your completion code is: "taro9".</h2>
+            <h2>You have a wonderful life now.</h2>
+        </div>
+    </div>
+
+    <!-- Ended early page -->
+    <div id="container-failed" style="display:none">
+        <div class="media-left pull-left" href="#">
+                <!-- REPLACE THE LOGO HERE WITH YOUR  UNIVERSITY, LAB, or COMPANY -->
+                <img id="adlogo" src="images/university.png" alt="Lab Logo" />
+        </div>
+        <div class="media-body">
+                    <h1>Oh no!</h1>
+                    <hr />
+                    <p>If you are seeing this page it means you did not pass an attention or understanding task.</p>
+                    <p>This task requires your full attention, thus we kindly ask you to exit and return this HIT.</p>
+                    <p>You can also refresh the page to restart this experiment.</p>
+                    <p>We're sorry for this inconvenience.</p>
+                    <!--
+                    <h2>You have a wonderful life now.</h2>
+                    -->
+        </div>
+    </div>
+
+    <!-- Final Page -->
+    <div id="final-page" style="display:none">
+        <div class="media-left pull-left" href="#">
+                <!-- REPLACE THE LOGO HERE WITH YOUR  UNIVERSITY, LAB, or COMPANY -->
+                <img id="adlogo" src="images/university.png" alt="Lab Logo" />
+        </div>
+        <div class="media-body">
+                    <h1>Your responses has been saved, thank you!</h1>
+                    <hr />
+        </div>
+    </div>
+   </main>
+  </body>
+
+  <script src="static/lib/jquery-min.js"></script>
+  <script src="static/lib/bootstrap.min.js"></script>
+  <script src="static/lib/d3.v3.min.js"></script>
+  <script src="static/lib/underscore-min.js"></script>
+  <script src="static/lib/backbone-min.js"></script>
+  <script src="index.js"></script>
+
+  
+  <!-- Just to test out forms as of now 
+        TODO: Delete when using server are ready -->
+  <script>
+    // function show(shown, hidden) {
+    //   document.getElementById(shown).style.display='block';
+    //   document.getElementById(hidden).style.display='none';
+    //   return false;
+    // }
+  </script>
+
+  <script>
+    // function onexit() {
+    //  window.close(); // no harm, no foul here
+    // }
+  </script>
+
+
+  </html>
