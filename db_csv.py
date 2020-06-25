@@ -5,7 +5,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Input key generated on firebase into the credentials.Certificate
-cred = credentials.Certificate('multic1-key.json')
+cred = credentials.Certificate('your-secret-key.json') # **TODO** input your secret key into the certificate
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
