@@ -21,6 +21,7 @@ pids
 *.pid
 *.seed
 *.pid.lock
+*.csv
 
 
 #SDK Keys
