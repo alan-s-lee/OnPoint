@@ -21,7 +21,7 @@ pids
 *.pid
 *.seed
 *.pid.lock
-*.csv
+
 
 #SDK Keys
 multic1-key.json
