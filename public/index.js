@@ -919,7 +919,7 @@ function startGame() {
   // } else {
   //   fileName = "/static/js/multiclamp05052020V5.json";
   // }
-  filesName = "/tgt_files/clamp2Targ_7.5ccw.json"
+  filesName = "/tgt_files/2Targ_clamp_demo_file.json"
   subject.tgt_file = fileName;
   subjTrials.group_type = "null"; // **TODO** update group_type to manage the groups
   $.getJSON(fileName, function(json){
