@@ -28,7 +28,7 @@ This file is the target file generator script. You can directly generate JSON ta
 If you are stuck, you can check out the overly detailed [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). For troubleshooting, check out the troubleshooting section of the manual, or use the issue tab [here](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
 
 ## Acknowledgements
-This tool has had contributions from a number of people, but we would like to especially thank Jonathan Tsay, Guy Avraham, Darius Parvin, Riley Woo, Alan Lee, and Jeremy Ho for putting this tool together.
+J.S.T was funded by a 2018 Florence P. Kendall Scholarship from the Foundation for Physical Therapy Research. This work was supported by grant NS092079 from the National Institutes of Health. 
 
 ## References
 [1] Helmholtz, H. L. F. V. (1924). Treatise on physiological optics. New York, NY: Dover Publications.  
