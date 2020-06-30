@@ -64,19 +64,12 @@ OnPoint consists of a dynamic webpage programmed in Javascript, HTML, and CSS. T
 
 # Figures
 
-Figures can be included like this:
-![Caption for example figure.\label{fig:example}](figure.png)
-and referenced from text using \autoref{fig:example}.
+<div style="text-align:center"> <img src="Fig1.png" alt="drawing" width="1000"/>
 
-Fenced code blocks are rendered with syntax highlighting:
-```python
-for n in range(10):
-    yield f(n)
-```	
+Figure 1: OnPoint Visuomotor Rotation Experiment Method and Results. (A) Left: Participants begin each reach by positioning their cursor (solid white circle) on their computer screen (grey background) in the start position (empty white circle). Middle, Right: A target (black circle) is then presented along an invisible ring for participants to move their cursor toward. The two examples illustrate cases where the cursor feedback is either unperturbed (middle) or rotated (right). (B) Mean time course of hand angles for 15° (green, n=30), 30° (purple, n=30), 60° (yellow, n=15), and 90° (blue, n=15) visuomotor rotation conditions. Hand angle is presented relative to the target (0°) during no feedback (dark grey background), veridical feedback (light grey background), and rotation trials (white background). Shaded region denotes standard error of the mean. (C) Average heading angles during early (cycles 31 – 40, each cycle represents 2 movements to 2 different targets) and late phases of the rotation block (cycles 69 – 78), and during the no feedback aftereffect block (cycles 79 – 81). Box plots denote the median (thick horizontal lines), quartiles (1st and 3rd, the edges of the boxes), and extrema (min and max, vertical thin lines). Each individual participant is shown (translucent dots). (D) Mean time course of reaction time. (E) Average reaction time during early and late phases of the rotation block, and during the no feedback aftereffect block. 
 
 # Acknowledgements
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
+J.S.T was funded by a 2018 Florence P. Kendall Scholarship from the Foundation for Physical Therapy Research. This work was supported by grant NS092079 from the National Institutes of Health. 
 
 # References
