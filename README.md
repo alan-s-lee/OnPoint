@@ -5,7 +5,7 @@ The goal of the github repository is to host traditional in-person reaching expe
 This tool in its current form requires users to create their own [Firebase](https://firebase.google.com/) accounts (which are tied to google) and [Amazon Mechanical Turk Requester](https://requester.mturk.com/) accounts. 
 > **NOTE** on the firebase account, if users follow the manual they will notice that our current database rules are very lax and may be insecure. We are open to any suggestions as to how to revise the database rules but please use to your own discretion. As of now, we have not run into security issues and do not see any motive for others to breach our databases, but please be mindful when using this tool.
 
-To use this tool and download all its dependencies, you will need python3 and npm installed on your device. Downloading the [Firbase CLI](https://firebase.google.com/docs/cli) which can be done with npm. Open your terminal and type in:
+To use this tool and download all its dependencies, you will need python3 and npm installed on your device. Downloading the [Firbase CLI](https://firebase.google.com/docs/cli) can be done with npm. Open your terminal and type in:
 > `$ npm install -g firebase-tools`
 
 In addition, the experiment itself is written in Javascript and HTML/CSS, target files are JSON objects, and dataloading scripts are written in python3. All Javascript libraries for the game are stored in `public/static/lib`. Due to the amount of files you will have to manage in this tool, we highly encourage you to use this tool with an IDE.
