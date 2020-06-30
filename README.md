@@ -26,7 +26,7 @@ The goal of the github repository is to help you host your motor learning experi
 
 ## Need help?
 
-If you are stuck, make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing), or use the [github's issue tab](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
+If you are stuck, please make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing) or use the [github's issue tab](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
 
 ## Acknowledgements
 
