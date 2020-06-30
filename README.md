@@ -1,31 +1,28 @@
 # Online Reaching Experiments
-The goal of the github repository is to host traditional in-person reaching experiments online with the help of firebase databases. This README will primarily be geared towards outlining the folders and files. For a detailed step-by-step manual documenting the entire process please visit this guide: [MANUAL FOR ONLINE HOSTING](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). 
+The goal of the github repository is to host online reaching experiments online. For a detailed step-by-step manual documenting the entire start-to-end pipeline, please visit this guide: [OnPoint Manual for Online Experiment Hosting](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). 
 
 ## Setup
-This tool in its current form requires users to create their own [Firebase](https://firebase.google.com/) accounts (which are tied to google) and [Amazon Mechanical Turk Requester](https://requester.mturk.com/) accounts. 
-> **NOTE** on the firebase account, if users follow the manual they will notice that our current database rules are very lax and may be insecure. We are open to any suggestions as to how to revise the database rules but please use to your own discretion. As of now, we have not run into security issues and do not see any motive for others to breach our databases, but please be mindful when using this tool.
+We use [Firebase](https://firebase.google.com/) to host the experiment on Google's server. We also recruit participants using [Amazon Mechanical Turk Requester](https://requester.mturk.com/) and [Prolific](https://www.prolific.co/).
 
-To use this tool and download all its dependencies, you will need python3 and npm installed on your device. Downloading the [Firbase CLI](https://firebase.google.com/docs/cli) can be done with npm. Open your terminal and type in:
-> `$ npm install -g firebase-tools`
+## Dependencies
 
-In addition, the experiment itself is written in Javascript and HTML/CSS, target files are JSON objects, and dataloading scripts are written in python3. All Javascript libraries for the game are stored in `public/static/lib`. Due to the amount of files you will have to manage in this tool, we highly encourage you to use this tool with an IDE.
-
-## Firebase configurations
-When initializing a Firebase project, you will be asked to create a number of configuration files for the project. These files are also pre-existing in this Github repository, the only file that we have modified from the default configurations is `firestore.rules` where we had to relax the rules. All other firebase configuration files should be identical.
+1. [Python3](https://www.python.org/downloads/) 
+2. [npm](https://www.npmjs.com/get-npm)
+3. [Firbase CLI](https://firebase.google.com/docs/cli) 
 
 ## Experiment files
-The the backend Javascript is located at `public/index.js`, the frontend HTML can be located at `public/index.html`, and the CSS styles are located in the folder `public/static/`. `index.html` only deals with the webpages, such as the consent page, instructions, and feedback, while `index.js` renders the experiment UI with D3.js. All areas that need to be modified should be marked by a `**TODO**` flag in the comments in each file respectively. 
 
-## Other scripts and files
-* `db_csv.py`
-This file is the dataloading script. After generating a secret key from your firebase, you can access the database and download it into csv files. Note that you can access the documents in the database with any valid field, does not necessary need to be the document "id". More documentation is in the file itself.
-* `csv_json.py`
-This file is a prewritten script for you to convert existing csv target files into JSON target files. Please note that the script can only convert csv files following a specific format, an example can be found at `csv_tgt_files/demo_csv_file.csv`. 
-* `public/tgt_files/generate_test_rot.py`
-This file is the target file generator script. You can directly generate JSON target files with this script that can be read into the experiment. One such script is `public/tgt_files/demo_file` which can be fed into `index.js` to run an existing demo experiment. More documentation is in the file itself. 
+1. Javascript for making the experiment dynamic: `public/index.js` 
+2. HTML files for creating the content of the experiment: `public/index.html` 
+3. CSS files for styling the content are located in the folder `public/static/`.
+4. JSON target files are located in `public/tgt_files/`. 
+5. Script to pull data from the Firebase server to your local computer: `db_csv.py`. 
+6. Script to generate target files in json: `public/tgt_files/generate_test_rot.py`.
+7. Script to convert csv target files into json files: `csv_json.py`.
+8. Example json target file: `public/tgt_files/demo_file`
 
 ## Getting help
-If you are stuck, you can check out the overly detailed [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). For troubleshooting, check out the troubleshooting section of the manual, or use the issue tab [here](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
+If you are stuck, please either make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing), or use the issue tab [here](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
 
 ## Acknowledgements
 J.S.T was funded by a 2018 Florence P. Kendall Scholarship from the Foundation for Physical Therapy Research. This work was supported by grant NS092079 from the National Institutes of Health. 
