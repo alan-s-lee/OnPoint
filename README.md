@@ -15,9 +15,9 @@ The goal of the github repository is to help you host your motor learning experi
 2. HTML files to create the content (e.g., experiment instructions): `public/index.html` 
 3. CSS files to style your content (e.g., color): `public/static/`.
 4. JSON target files (e.g., experiment design, with one row corresponding to one trial): `public/tgt_files/`. 
-5. Downloading data from the Firebase server to your local computer: `db_csv.py`. 
+5. Downloading data from the Firebase server to your local computer: `python_scripts/db_csv.py`. 
 6. Generate JSON target files: `public/tgt_files/generate_test_rot.py`.
-7. Convert CSV target files into JSON files: `csv_json.py`.
+7. Convert CSV target files into JSON files: `python_scripts/csv_json.py`.
 8. Example JSON target file: `public/tgt_files/demo_file`
 
 ## Final Output
