@@ -1,28 +1,28 @@
 # OnPoint: A package for online experiments in motor control and motor learning
 
-The goal of the github repository is to help you host your motor learning online. For a detailed step-by-step manual documenting the start-to-end pipeline, please visit this guide: [OnPoint Manual for Online Experiment Hosting](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). The experiment is essentially a website coded in Javascript/HTML/CSS and hosted on the [Firebase server](https://firebase.google.com/). Participants can be recruited using [Amazon Mechanical Turk Requester](https://requester.mturk.com/) and [Prolific](https://www.prolific.co/). 
+The goal of the github repository is to help you host your motor learning experiment online. For a detailed step-by-step breakdown, please visit the [OnPoint Manual for Online Experiment Hosting](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). The experiment is in essence a website coded in Javascript/HTML/CSS and hosted on the [Firebase server](https://firebase.google.com/). Participants can be recruited using [Amazon Mechanical Turk Requester](https://requester.mturk.com/), [Prolific](https://www.prolific.co/), or any other crowdsourcing platform. 
 
 ## Dependencies
 
 1. [Python3](https://www.python.org/downloads/) 
 2. [NPM](https://www.npmjs.com/get-npm): requirement to download Firebase 
-3. [Firbase](https://firebase.google.com/docs/cli): functions needed to host your online experiment on google's server. 
+3. [Firbase](https://firebase.google.com/docs/cli): functions needed to host your online experiment on Google's Firebase server. 
 4. [Amazon Mechanical Turk Requester](https://requester.mturk.com/) & [Prolific](https://www.prolific.co/): Crowdsourcing websites used to recruit participants. 
 
-## Files
+## Important files
 
-1. Javascript for making the experiment dynamic: `public/index.js` 
-2. HTML files for creating the content of the experiment: `public/index.html` 
-3. CSS files for styling the content are located in the folder `public/static/`.
-4. JSON target files are located in `public/tgt_files/`. 
-5. Script to pull data from the Firebase server to your local computer: `db_csv.py`. 
-6. Script to generate target files in json: `public/tgt_files/generate_test_rot.py`.
-7. Script to convert csv target files into json files: `csv_json.py`.
-8. Example json target file: `public/tgt_files/demo_file`
+1. Javascript code to make your experiment dynamic (e.g., appearance of a target): `public/index.js` 
+2. HTML files to create the content (e.g., experiment instructions): `public/index.html` 
+3. CSS files to style your content (e.g., color): `public/static/`.
+4. JSON target files (e.g., experiment design, with one row corresponding to one trial): `public/tgt_files/`. 
+5. Downloading data from the Firebase server to your local computer: `db_csv.py`. 
+6. Generate JSON target files: `public/tgt_files/generate_test_rot.py`.
+7. Convert CSV target files into JSON files: `csv_json.py`.
+8. Example JSON target file: `public/tgt_files/demo_file`
 
 ## Need help?
 
-If you are stuck, please either make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing), or use the issue tab [here](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
+If you are stuck, make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing), or use the [github's issue tab](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
 
 ## Acknowledgements
 
