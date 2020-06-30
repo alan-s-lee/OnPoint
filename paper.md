@@ -39,11 +39,12 @@ authors:
     affiliation: 1, 2  
     
 affiliations:
- - name: Department of Psychology, University of California, Berkeley
-   index: 1
- - name: Helen Wills Neuroscience Institute, University of California, Berkeley 
-   index: 2
-date: 30 June 2020
+ - name: Department of Psychology, University of California, Berkeley   
+   index: 1   
+ - name: Helen Wills Neuroscience Institute, University of California, Berkeley    
+   index: 2   
+
+date: 30 June 2020   
 bibliography: paper.bib
 
 
@@ -53,61 +54,16 @@ bibliography: paper.bib
 
 # Summary
 
-The forces on stars, galaxies, and dark matter under external gravitational
-fields lead to the dynamical evolution of structures in the universe. The orbits
-of these bodies are therefore key to understanding the formation, history, and
-future state of galaxies. The field of "galactic dynamics," which aims to model
-the gravitating components of galaxies to study their structure and evolution,
-is now well-established, commonly taught, and frequently used in astronomy.
-Aside from toy problems and demonstrations, the majority of problems require
-efficient numerical tools, many of which require the same base code (e.g., for
-performing numerical orbit integration).
+The ability to produce a wide repertoire of movements, and to adjust those movements in response to changes in the body and environment, is a core feature of human competence. This ability allows babies to learn how to reach and walk, athletes to achieve incredible levels of skill, and patients to recover from injury and neurological disorders (John W. Krakauer, Hadjiosif, Roemmich and Bastian 2018, Xu, Wong, & Haith, 2019a). By improving our understanding of how movements are learned, we can uncover general principles about how the motor system functions and develops, optimize training techniques for sport and rehabilitation, and design better brain-machine interfaces.
 
-`Gala` is an Astropy-affiliated Python package for galactic dynamics. Python
-enables wrapping low-level languages (e.g., C) for speed without losing
-flexibility or ease-of-use in the user-interface. The API for `Gala` was
-designed to provide a class-based and user-friendly interface to fast (C or
-Cython-optimized) implementations of common operations such as gravitational
-potential and force evaluation, orbit integration, dynamical transformations,
-and chaos indicators for nonlinear dynamics. `Gala` also relies heavily on and
-interfaces well with the implementations of physical units and astronomical
-coordinate systems in the `Astropy` package [@astropy] (`astropy.units` and
-`astropy.coordinates`).
+A paradigmatic approach for studying motor learning is to introduce a novel mapping between the motion of the arm and the corresponding visual feedback (John W. Krakauer et al., 2019a). Historically, such visuomotor perturbations have been accomplished by the use of prism glasses, which can displace the visual field vertically or laterally (Helmholtz, 1924). Nowadays, simple virtual reality setups allow for more direct and flexible control of the relationship between hand position and the position of a a feedback signal.  A commonly used perturbation in such studies is visuomotor rotation. Here, participants reach to a visual target with vision of their arm occluded. Feedback is provided in the form of a cursor presented on a computer monitor.  After a brief training period during which the feedback corresponds to the to the actual hand position, a perturbation is introduced by rotating the position of the cursor from the actual hand position (e.g., 45°) (J. W. Krakauer, Pine, Ghilardi, & Ghez, 2000). When the rotation is applied, participants gradually adjust their movements over several trials to compensate for the perturbation in an attempt to improve performance (Shadmehr, Smith, & Krakauer, 2010). 
 
-`Gala` was designed to be used by both astronomical researchers and by
-students in courses on gravitational dynamics or astronomy. It has already been
-used in a number of scientific publications [@Pearson:2017] and has also been
-used in graduate courses on Galactic dynamics to, e.g., provide interactive
-visualizations of textbook material [@Binney:2008]. The combination of speed,
-design, and support for Astropy functionality in `Gala` will enable exciting
-scientific explorations of forthcoming data releases from the *Gaia* mission
-[@gaia] by students and experts alike.
+Motor learning experiments are typically run in-person, exploiting finely calibrated setups (digitizing tablets, robotic manipulandum, full VR displays, etc.) that provide high temporal and spatial resolution. However, these experiments come at a cost, not limited to the one-time expense of purchasing equipment but also the substantial time devoted to recruiting participants to come to the lab and then the time required to administer the experiment.  Moreover, exceptional circumstances that limit in-person testing, such as a global pandemic, may halt research progress. 
 
-# Mathematics
+These limitations of in-person motor learning research have motivated the design of OnPoint, an open-source software package for motor control and motor learning researchers. OnPoint provides kinematic data with good temporal (e.g., reaction and movement time) and spatial resolution (e.g., motor bias and motor variance). OnPoint offers an unprecedented opportunity to implement on-line motor control experiments with minimal cost online. Online motor learning experiments reduce the time (and money) required for recruitment and testing participants in the lab. Moreover, online studies expand the pool of participants from a homogenous university setting to a heterogeneous online community (e.g., via Amazon Mechanical Turk and Prolific). As with all online studies, OnPoint offers an opportunity to the motor learning community to conduct large-N motor learning studies, with potential applications to do faster pilot testing, replicate previous findings, and conduct longitudinal studies. 
 
-Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
+OnPoint consists of a dynamic webpage programmed in Javascript, HTML, and CSS. These webpages can be hosted on any server (e.g., Google Firebase, Amazon Web Services). Python packages are then used to download your data from the public server to your local computer. OnPoint is available on Github, with a step-by-step guide that walks through the entire pipeline. 
 
-Double dollars make self-standing equations:
-
-$$\Theta(x) = \left\{\begin{array}{l}
-0\textrm{ if } x < 0\cr
-1\textrm{ else}
-\end{array}\right.$$
-
-You can also use plain \LaTeX for equations
-\begin{equation}\label{eq:fourier}
-\hat f(\omega) = \int_{-\infty}^{\infty} f(x) e^{i\omega x} dx
-\end{equation}
-and refer to \autoref{eq:fourier} from text.
-
-# Citations
-
-Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
-
-If you want to cite a software repository URL (e.g. something on GitHub without a preferred
-citation) then you can do it with the example BibTeX entry below for @fidgit.
 
 For a quick reference, the following citation commands can be used:
 - `@author:2001`  ->  "Author et al. (2001)"
