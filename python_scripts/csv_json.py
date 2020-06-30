@@ -57,8 +57,8 @@ def jsonFromCsv(csvFilePath, jsonFilePath):
 """
 Please reference 'tbt_tgtfile_04272020_V2.csv' for how csv files should be formatted.
 """
-csvFilePath = 'csv_tgt_files/multiclamp_demo_csv_file.csv'
-jsonFilePath = 'public/tgt_files/multiclamp_demo.json'
+csvFilePath = '../csv_tgt_files/multiclamp_demo_csv_file.csv'
+jsonFilePath = '../public/tgt_files/multiclamp_demo.json'
 
 jsonFromCsv(csvFilePath, jsonFilePath)
 

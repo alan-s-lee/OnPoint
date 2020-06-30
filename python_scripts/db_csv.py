@@ -130,14 +130,14 @@ def addTrialData(collection, numTrials, csvFileName, subjects, db):
 ### Update subjects to be the proper parameter you select to choose from firebase
 ### IMPORTANT NOTE: Depending on what field you choose to access the database, you may have to edit the functions slightly.
 ### Refer to comments in the functions themselves to make changes
-subjects = [176]
+subjects = [] # **TODO** Fill in subjects list with an appropriate field saved in the database
 
 ### Select one of the following methods:
 ### "get" indicates you are starting a new csv, "add" indicates you are adding to an existing csv
 ### Subject data is the information subjects provide about themselves and trialData is trials
 
-#getSubjectData(subjects, 'vmr4Targ_Subject_data.csv', db, 'Subjects')
-#addSubjectData(subjects, 'vmr2Targ_Subject_data.csv', db, 'Subjects')
-#getTrialData('Trials', 270, 'multiClamp05062020.csv', subjects, db)
-#addTrialData('Trials', 294, 'multiClamp05132020.csv', subjects, db)
+#getSubjectData(subjects, 'your_csv_name.csv', db, 'Subjects')
+#addSubjectData(subjects, 'your_csv_name.csv', db, 'Subjects')
+#getTrialData('Trials', 270, 'your_csv_name.csv', subjects, db)
+#addTrialData('Trials', 294, 'you_csv_name.csv', subjects, db)
 #minitest()
