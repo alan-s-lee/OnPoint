@@ -20,6 +20,10 @@ The goal of the github repository is to help you host your motor learning experi
 7. Convert CSV target files into JSON files: `csv_json.py`.
 8. Example JSON target file: `public/tgt_files/demo_file`
 
+## Final Output
+
+[ALAN INSERT VIDEO HERE: CURSOR FINDING CENTER]
+
 ## Need help?
 
 If you are stuck, make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing), or use the [github's issue tab](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
