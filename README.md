@@ -5,9 +5,8 @@ The goal of the github repository is to host traditional in-person reaching expe
 This tool in its current form requires users to create their own [Firebase](https://firebase.google.com/) accounts (which are tied to google) and [Amazon Mechanical Turk Requester](https://requester.mturk.com/) accounts. 
 > **NOTE** on the firebase account, if users follow the manual they will notice that our current database rules are very lax and may be insecure. We are open to any suggestions as to how to revise the database rules but please use to your own discretion. As of now, we have not run into security issues and do not see any motive for others to breach our databases, but please be mindful when using this tool.
 
-You will also have to download the [Firbase CLI](https://firebase.google.com/docs/cli) which can be done with npm. Open your terminal and type in:
+To use this tool and download all its dependencies, you will need python3 and npm installed on your device. Downloading the [Firbase CLI](https://firebase.google.com/docs/cli) which can be done with npm. Open your terminal and type in:
 > `$ npm install -g firebase-tools`
-
 
 In addition, the experiment itself is written in Javascript and HTML/CSS, target files are JSON objects, and dataloading scripts are written in python3. All Javascript libraries for the game are stored in `public/static/lib`. Due to the amount of files you will have to manage in this tool, we highly encourage you to use this tool with an IDE.
 
@@ -26,13 +25,17 @@ This file is a prewritten script for you to convert existing csv target files in
 This file is the target file generator script. You can directly generate JSON target files with this script that can be read into the experiment. One such script is `public/tgt_files/demo_file` which can be fed into `index.js` to run an existing demo experiment. More documentation is in the file itself. 
 
 ## Getting help
-If you are stuck, you can check out the overly detailed [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). For troubleshooting, check out the troubleshooting section of the manual and leave a comment if your issue has not been addressed! 
-
-## Citation
-Coming soooooooon (I hope). 
+If you are stuck, you can check out the overly detailed [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). For troubleshooting, check out the troubleshooting section of the manual, or use the issue tab [here](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
 
 ## Acknowledgements
 This tool has had contributions from a number of people, but we would like to especially thank Jonathan Tsay, Guy Avraham, Darius Parvin, Riley Woo, Alan Lee, and Jeremy Ho for putting this tool together.
 
 ## References
-Working on it... hehe
+[1] Helmholtz, H. L. F. V. (1924). Treatise on physiological optics. New York, NY: Dover Publications.  
+[2] Krakauer, J. W., Pine, Z. M., Ghilardi, M. F., & Ghez, C. (2000). Learning of visuomotor transformations for vectorial planning of reaching trajectories. The Journal of Neuroscience: The Official Journal of the Society for Neuroscience, 20(23), 8916–8924.  
+[3] Krakauer, John W., Hadjiosif, A. M., Xu, J., Wong, A. L., & Haith, A. M. (2019a). Motor Learning. Comprehensive Physiology, 9(2), 613–663.  
+[4] Krakauer, John W., Hadjiosif, A. M., Xu, J., Wong, A. L., & Haith, A. M. (2019b). Motor Learning. Comprehensive Physiology, 9(2), 613–663.  
+[5] Roemmich, R. T., & Bastian, A. J. (2018). Closing the Loop: From Motor Neuroscience to Neurorehabilitation. Annual Review of Neuroscience, 41, 415–429.  
+[6] Shadmehr, R., Smith, M. A., & Krakauer, J. W. (2010). Error correction, sensory prediction, and adaptation in motor control. Annual Review of Neuroscience, 33, 89–108.  
+[7] Tseng, Y.-W., Diedrichsen, J., Krakauer, J. W., Shadmehr, R., & Bastian, A. J. (2007). Sensory prediction errors drive cerebellum-dependent adaptation of reaching. Journal of Neurophysiology, 98(1), 54–62.
+
