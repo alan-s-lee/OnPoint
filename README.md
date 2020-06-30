@@ -6,7 +6,7 @@ The goal of the github repository is to help you host your motor learning experi
 
 1. [Python3](https://www.python.org/downloads/) 
 2. [NPM](https://www.npmjs.com/get-npm): requirement to download Firebase 
-3. [Firbase](https://firebase.google.com/docs/cli): functions needed to host your online experiment on Google's Firebase server. 
+3. [Firebase](https://firebase.google.com/docs/cli): functions needed to host your online experiment on Google's Firebase server. 
 4. [Amazon Mechanical Turk Requester](https://requester.mturk.com/) & [Prolific](https://www.prolific.co/): Crowdsourcing websites used to recruit participants. 
 
 ## Important files
@@ -22,7 +22,7 @@ The goal of the github repository is to help you host your motor learning experi
 
 ## Final Output
 
-[ALAN INSERT VIDEO HERE: CURSOR FINDING CENTER]
+[![](http://img.youtube.com/vi/IIOWzTsrV80/0.jpg)](http://www.youtube.com/watch?v=IIOWzTsrV80 "")
 
 ## Need help?
 
