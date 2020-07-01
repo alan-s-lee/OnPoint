@@ -22,7 +22,7 @@ The goal of the github repository is to help you host your motor learning experi
 
 ## Final Output
 
-[![](http://img.youtube.com/vi/IIOWzTsrV80/0.jpg)](http://www.youtube.com/watch?v=IIOWzTsrV80 "")
+[![](public/images/sampleOut.gif)]
 
 ## Need help?
 
