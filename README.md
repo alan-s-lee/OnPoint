@@ -22,7 +22,7 @@ The goal of the github repository is to help you host your motor learning experi
 
 ## Final Output
 
-[![](public/images/sampleOut.gif)]
+<img src="public/images/sampleOut.gif" width="720" height="404" />
 
 ## Need help?
 
