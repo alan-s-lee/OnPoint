@@ -2,6 +2,10 @@
 
 The goal of the github repository is to help you host your motor learning experiment online. For a detailed step-by-step breakdown, please visit the [OnPoint Manual for Online Experiment Hosting](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing). The experiment is in essence a website coded in Javascript/HTML/CSS and hosted on the [Firebase server](https://firebase.google.com/). Participants can be recruited using [Amazon Mechanical Turk Requester](https://requester.mturk.com/), [Prolific](https://www.prolific.co/), or any other crowdsourcing platform. 
 
+[Try out one of our experiments here.](https://multiclamp-c2.web.app/) 
+
+<img src="public/images/sampleOut.gif" width="720" height="404" />
+
 ## Dependencies
 
 1. [Python3](https://www.python.org/downloads/) 
@@ -20,9 +24,6 @@ The goal of the github repository is to help you host your motor learning experi
 7. Convert CSV target files into JSON files: `python_scripts/csv_json.py`.
 8. Example JSON target file: `public/tgt_files/demo_file`
 
-## Final Output
-
-<img src="public/images/sampleOut.gif" width="720" height="404" />
 
 ## Need help?
 
