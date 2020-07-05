@@ -25,7 +25,6 @@ The goal of the github repository is to help you host your motor learning experi
 7. Convert CSV target files into JSON files: `python_scripts/csv_json.py`.
 8. Example JSON target file: `public/tgt_files/demo_file`
 
-
 ## Need help?
 
 If you are stuck, please make a comment on the [Manual](https://docs.google.com/document/d/1E5XzQU2dJw7m880P7VhmESPpUNQlEdMcf9fweHLtG0o/edit?usp=sharing) or use the [github's issue tab](https://github.com/alan-s-lee/Reaching_Exp_Online/issues)!
@@ -33,6 +32,10 @@ If you are stuck, please make a comment on the [Manual](https://docs.google.com/
 ## Acknowledgements
 
 J.S.T was funded by a 2018 Florence P. Kendall Scholarship from the Foundation for Physical Therapy Research. This work was supported by grant NS092079 from the National Institutes of Health. 
+
+## How to cite this?
+
+Tsay, J. S., Lee, A. S., Avraham, G., Parvin, D. E., Ho, J., Boggess, M., Ivry, R. (2020, July 1). OnPoint: A package for online experiments in motor control and motor learning. https://doi.org/10.31234/osf.io/hwmpy
 
 ## References
 
