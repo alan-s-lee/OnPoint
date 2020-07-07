@@ -10,26 +10,13 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-# This function is a quick check to see if the mechanisms work (obsolete)
-def minitest():
-    sub = 'SubjectInfo'
-    
-    #Edit duck to be a valid id of a document on the database
-    duck = 'bobthebuilder'
-
-    docs = db.collection(sub).where(u'id', u'==', duck).stream()
-
-    for doc in docs:
-        fields = doc.to_dict()
-        print(fields.get("age"))
-
-def getSubjectData(subjects, csvFileName, db, collection):
+# Helper function for reading subject data from database
+def subjcsvread(subjects, csvFileName, db, collection):
     subjectList = []
     for subj in subjects:
 
         try:
-            # You can replace 'currTrial' with any valid field in the database documents, and change the values in "subjects" accordingly
-            docs = db.collection(collection).where(u'currTrial', u'==', subj).stream()
+            docs = db.collection(collection).where(u'id', u'==', subj).stream()
             for doc in docs:
                 fields = doc.to_dict()
                 info = (fields.get('id'), fields.get('age'), fields.get('clampQ'), fields.get('comments'), fields.get('currTrial'), fields.get('handedness'), fields.get('ethnicity'), fields.get('mousetype'), fields.get('race'), fields.get('returner'), fields.get('sex'), fields.get('tgt_file'))
@@ -37,6 +24,12 @@ def getSubjectData(subjects, csvFileName, db, collection):
         except:
             print(subj + "doesn't exist!")
             continue
+
+    return subjectList
+
+
+def getSubjectData(subjects, csvFileName, db, collection):
+    subjectList = subjcsvread(subjects, csvFileName, db, collection)
 
     #Set up file to write to
     file = open(csvFileName, 'w')
@@ -47,35 +40,27 @@ def getSubjectData(subjects, csvFileName, db, collection):
     file.close()
 
 def addSubjectData(subjects, csvFileName, db, collection):
-    subjectList = []
-    for subj in subjects:
-
-        try:
-            # You can replace 'currTrial' with any valid field in the database documents, and change the values in "subjects" accordingly
-            docs = db.collection(collection).where(u'currTrial', u'==', subj).stream()
-            for doc in docs:
-                fields = doc.to_dict()
-                info = (fields.get('id'), fields.get('age'), fields.get('clampQ'), fields.get('comments'), fields.get('currTrial'), fields.get('handedness'), fields.get('ethnicity'), fields.get('mousetype'), fields.get('race'), fields.get('returner'), fields.get('sex'), fields.get('tgt_file'))
-                subjectList.append(info)
-        except:
-            print(subj + "doesn't exist!")
-            continue
+    subjectList = subjcsvread(subjects, csvFileName, db, collection)
 
     #Set up file to write to
     file = open(csvFileName, 'a')
     writer = csv.writer(file)
     writer.writerows(subjectList)
     file.close()
-
-def getTrialData(collection, numTrials, csvFileName, subjects, db):
+ 
+    
+def trialcsvread(collection, numTrials, csvFileName, subjects, db):   
+    
     #Create array with complete set of id's in database
     #Comment out this portion if you are not using 'id' as your field
     ids = []
     for subj in subjects:
         for i in range(1, numTrials + 1):
             ids.append(subj + str(i))
+    
     #Setup chonky array with every trial inside
     trials = []
+    
     #Change "ids" to "subjects" if not using 'id' as your indicated field below
     for trialID in ids:
         try:
@@ -88,7 +73,14 @@ def getTrialData(collection, numTrials, csvFileName, subjects, db):
         except:
             print(trialID + "wasn't completed!")
             continue
-
+    
+    return trials
+    
+    
+def getTrialData(collection, numTrials, csvFileName, subjects, db):
+   
+    trials = trialcsvread(collection, numTrials, csvFileName, subjects, db)
+    
     #Set up file to write to
     file = open(csvFileName, 'w')
     writer = csv.writer(file)
@@ -98,31 +90,14 @@ def getTrialData(collection, numTrials, csvFileName, subjects, db):
     file.close()
 
 def addTrialData(collection, numTrials, csvFileName, subjects, db):
-    #Create array with complete set of id's in database
-    #Comment out this portion if you are not using 'id' as your field
-    ids = []
-    for subj in subjects:
-        for i in range(1, numTrials + 1):
-            ids.append(subj + str(i))
-    #Setup chonky array with every trial inside
-    trials = []
-    #Change "ids" to "subjects" if not using 'id' as your indicated field below
-    for trialID in ids:
-        try:
-            # You can replace 'id' with any valid field in the database documents, and change the values in "subjects" accordingly
-            docs = db.collection(collection).where(u'id', u'==', trialID).stream()
-            for doc in docs:
-                fields = doc.to_dict()
-                trial = (fields.get('experimentID'), fields.get('name'), fields.get('currentDate'), fields.get('trialNum'), fields.get('target_angle'), fields.get('trial_type'), fields.get('rotation'), fields.get('hand_fb_angle'), fields.get('rt'), fields.get('mt'), fields.get('search_time'), fields.get('reach_feedback'), fields.get('group_type'))
-                trials.append(trial)
-        except:
-            print(trialID + "wasn't completed!")
-            continue
-
+    
+    trials = trialcsvread(collection, numTrials, csvFileName, subjects, db)
+    
     #Set up file to write to
     file = open(csvFileName, 'a')
     writer = csv.writer(file)
     emptyrow = []
+    
     #writer.writerow(emptyrow)
     writer.writerows(trials)
     file.close()
@@ -140,4 +115,4 @@ subjects = [] # **TODO** Fill in subjects list with an appropriate field saved i
 #addSubjectData(subjects, 'your_csv_name.csv', db, 'Subjects')
 #getTrialData('Trials', 270, 'your_csv_name.csv', subjects, db)
 #addTrialData('Trials', 294, 'you_csv_name.csv', subjects, db)
-#minitest()
+
