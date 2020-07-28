@@ -9,7 +9,7 @@ Remember to update necessary fields before starting the game. All fields that re
 
 // Set to 'true' if you wish to only test the front-end (will not access databases)
 // **TODO** Make sure this is set to false before deploying!
-const noSave = false;
+const noSave = true;
 
 
 var fileName;
@@ -41,7 +41,7 @@ function onexit() {
 
 // Function used to enter full screen mode
 function openFullScreen() {
-  elem = document.getElementById('stage'); 
+  elem = document.getElementById('container-info'); 
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
     console.log("enter1")
@@ -119,6 +119,7 @@ function checkInfo(){
   subject.race = values[8].value;
   if (noSave) {
     show('container-exp', 'container-info');
+    openFullScreen();
     startGame();
     return;
   }
@@ -134,6 +135,7 @@ function checkInfo(){
   } else {
     show('container-exp', 'container-info');
     createSubject(subjectcollection, subject);
+    openFullScreen();
     startGame();
   }
 }
@@ -278,8 +280,6 @@ function gameSetup(data) {
   // Getting the screen resolution
   screen_height = window.screen.availHeight;
   screen_width = window.screen.availWidth;
-
-  openFullScreen();
 
   // Calling update_cursor() everytime the user moves the mouse
   $(document).on("mousemove", update_cursor);
