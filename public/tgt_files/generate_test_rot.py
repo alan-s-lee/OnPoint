@@ -5,15 +5,6 @@ To implement target jump, clamp, or online feedback make appropriate changes in 
 import json
 import random
 
-"""def generateTargetAngles(numTargets):
-    >>> generateTargetAngles(4)
-    [0, 90, 180, 270]
-    angleDifference = int(360 / numTargets)
-    angleList = []
-    for i in range(0, 360, angleDifference):
-        angleList.append(i + 30)
-    return angleList
-"""
 def generateTargetAngles(numTargets):
     """
     temporary usage of this function for non-evenly spaced targets
@@ -143,7 +134,7 @@ def generateJSON(numTargets, movementCycle, cycleDistribution, rotationAngle, ta
         print ("value: ", jsonData[key])
         print ("")
 
-    with open('testPython.json', 'w') as outfile:
+    with open('testShort.json', 'w') as outfile:
         json.dump(jsonData, outfile)
 
 
