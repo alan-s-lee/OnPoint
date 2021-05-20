@@ -260,8 +260,30 @@
             <h1>Thanks for your participation!</h1>
             <hr />
 
-            <h2>Now just one more question and you're done!</h2>
-
+            <h2>Now just two more question and you're done!</h2>
+            <form id="distractionForm">
+                <div class="question" id="distraction">
+                    Please check any items that you have engaged in during the task. Please answer truthfully (there will be no penalty). <br>
+                    <input type="checkbox" id="distract1" name="distract1" value="Phone">
+                    <label for="distract1"> I used my cellphone</label><br>
+                    <input type="checkbox" id="distract2" name="distract2" value="internet">
+                    <label for="distract2"> I browsed the internet</label><br>
+                    <input type="checkbox" id="distract3" name="distract3" value="person">
+                    <label for="distract3"> I talked to another person</label><br>
+                    <input type="checkbox" id="distract4" name="distract4" value="tv">
+                    <label for="distract4"> I watched TV</label><br>
+                    <input type="checkbox" id="distract5" name="distract5" value="music">
+                    <label for="distract5"> I listened to music</label><br>
+                    <input type="checkbox" id="distract6" name="distract6" value="restroom">
+                    <label for="distract6"> I went to the restroom</label><br>
+                    <input type="checkbox" id="distract7" name="distract7" value="other">
+                    <label for="distract4"> Other</label><br>
+                </div>
+                <div class="question" id="feedback">
+                    If you checked "Other," please indicate here:
+                    <input id="distracto" type="text" name="distracto" value="">
+                </div>
+            </form>
             <form id="feedbackForm">
                 <div class="question" id="feedback">
                     Let us know if you had any issues with this experiment!

@@ -82,7 +82,9 @@ var subject = {
     tgt_file: null,
     ethnicity: null,
     race: null,
-    comments: null
+    comments: null,
+    distractions: [],
+    distracto: null
 }
 
 // Object used to track reaching data (updated every reach and uploaded to database)
@@ -895,7 +897,7 @@ function gameSetup(data) {
 // Function used to start running the game
 // **TODO** Update the 'fileName' to path to targetfile
 function startGame() {
-    fileName = "tgt_files/testShort.json"
+    fileName = "tgt_files/testShort.json";
     subject.tgt_file = fileName;
     subjTrials.group_type = "null"; // **TODO** update group_type to manage the groups
     $.getJSON(fileName, function(json) {
@@ -961,7 +963,19 @@ function endGame() {
 // Function used to save the feedback from the final HTML page
 function saveFeedback() {
     var values = $("#feedbackForm").serializeArray();
-    subject.comments = values[0].value;
+    if (values[0].value != "") {
+        subject.comments = values[0].value;
+    }
+    values = $("#distractionForm").serializeArray();
+    var i;
+    for (i = 0; i < values.length; i++) {
+        subject.distractions.push(values[i].value);
+        if (values[i].value == "other") {
+            subject.distracto = values[i + 1].value;
+            break;
+        }
+    }
+
     createSubject(subjectcollection, subject);
     show('final-page', 'container-not-an-ad');
 }
