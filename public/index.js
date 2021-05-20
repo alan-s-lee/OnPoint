@@ -34,6 +34,24 @@ function show(shown, hidden) {
     return false;
 }
 
+// Function to save the dpi
+function saveDPI() {
+    if (noSave) {
+        show('container-instructions2', 'container-dpi')
+        return false;
+    }
+    var values = $("#dpiform").serializeArray();
+    var dpi = values[0].value;
+    dpi = +dpi;
+    if (!dpi) {
+        alert("Please input a valid number!");
+        return;
+    }
+    subject.dpi = dpi;
+    show('container-instructions2', 'container-dpi')
+    return false;
+}
+
 // Close window (function no longer in use for this version)
 function onexit() {
     window.close();
@@ -84,7 +102,8 @@ var subject = {
     race: null,
     comments: null,
     distractions: [],
-    distracto: null
+    distracto: null,
+    dpi: null
 }
 
 // Object used to track reaching data (updated every reach and uploaded to database)
@@ -267,12 +286,6 @@ function gameSetup(data) {
     screen_height = window.screen.availHeight;
     screen_width = window.screen.availWidth;
 
-    // Calling update_cursor() everytime the user moves the mouse
-    $(document).on("mousemove", update_cursor);
-
-    // Calling advance_block() everytime the user presses a key on the keyboard
-    $(document).on("keydown", advance_block);
-
     // Experiment parameters, subject_ID is no obsolete
     experiment_ID = "test"; // **TODO** Update experiment_ID to label your experiments
     subject_ID = Math.floor(Math.random() * 10000000000);
@@ -300,17 +313,6 @@ function gameSetup(data) {
         .attr('stroke', start_color)
         .attr('stroke-width', 2)
         .attr('id', 'start')
-        .attr('display', 'none');
-
-
-    // Drawing the search ring that expands and contracts as users search for the start circle (currently unemployed)
-    svgContainer.append('circle')
-        .attr('cx', start_x)
-        .attr('cy', start_y)
-        .attr('fill', 'none')
-        .attr('stroke', start_color)
-        .attr('stroke-width', 2)
-        .attr('id', 'search_ring')
         .attr('display', 'none');
 
     // Setting parameters and drawing the target 
@@ -344,6 +346,25 @@ function gameSetup(data) {
     cursor_radius = Math.round(target_dist * 1.75 * 1.5 / 80.0);
     cursor_color = 'white';
 
+    // Function to move cursor to random location near center
+    function moveCursor() {
+        var off_x = Math.random() * start_radius + start_radius;
+        var off_y = Math.random() * start_radius + start_radius;
+        var flip_x = Math.floor(Math.random() * 2);
+        var flip_y = Math.floor(Math.random() * 2);
+        if (flip_x) {
+            hand_x = start_x - off_x;
+        } else {
+            hand_x = start_x + off_y;
+        }
+        if (flip_y) {
+            hand_y = start_y - off_y;
+        } else {
+            hand_y = start_y + off_y;
+        }
+    }
+    moveCursor();
+    console.log("Initial X: " + hand_x + " Initial Y: " + hand_y);
     // Drawing the displayed cursor 
     svgContainer.append('circle')
         .attr('cx', hand_x)
@@ -351,7 +372,7 @@ function gameSetup(data) {
         .attr('r', cursor_radius)
         .attr('fill', cursor_color)
         .attr('id', 'cursor')
-        .attr('display', 'block');
+        .attr('display', 'none');
 
     // The between block messages that will be displayed
     // **TODO** Update messages depending on your experiment
@@ -474,6 +495,29 @@ function gameSetup(data) {
         .attr('display', 'none')
         .text('Reach Number: ' + counter + ' / ' + totalTrials);
 
+    /***************************************
+     * Pointer Lock Variables and Functions *
+     ***************************************/
+    document.requestPointerLock = document.requestPointerLock || document.mozRequestPointerLock;
+    document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;
+    document.addEventListener('pointerlockchange', lockChangeAlert, false);
+    document.addEventListener('mozpointerlockchange', lockChangeAlert, false);
+
+    function lockChangeAlert() {
+        if (document.pointerLockElement === stage ||
+            document.mozPointerLockElement === stage) {
+            console.log('The pointer lock status is now locked');
+            document.addEventListener('mousemove', update_cursor, false);
+            document.addEventListener('keydown', advance_block, false);
+        } else {
+            console.log('The pointer lock status is now unlocked');
+            document.removeEventListener('mousemove', update_cursor, false);
+            document.removeEventListener('keydown', advance_block, false);
+        }
+    }
+    console.log("Attempted to lock pointer");
+    stage.requestPointerLock();
+
     /*****************
      * Task Variables *
      *****************/
@@ -546,16 +590,13 @@ function gameSetup(data) {
       from the start circle
       * Computes a rotation on the cursor if during appropriate game phase
       * Draws the cursor if in appropriate game phase
-      * Triggers changes in game phase if appropriate conditions are met*
+      * Triggers changes in game phase if appropriate conditions are met
     ********************/
     function update_cursor(event) {
-        var eventDoc, doc, body, pageX, pageY; // These variables are now obsolete
-
-        // Record the current mouse location
+        // Record the current mouse movement location
         event = event || window.event;
-        hand_x = event.pageX;
-        hand_y = event.pageY;
-
+        hand_x += event.movementX;
+        hand_y += event.movementY;
         // Update radius between start and hand location
         r = Math.sqrt(Math.pow(start_x - hand_x, 2) + Math.pow(start_y - hand_y, 2));
 
@@ -604,7 +645,6 @@ function gameSetup(data) {
                 d3.select('#cursor').attr('cx', cursor_x).attr('cy', cursor_y).attr('display', 'block');
                 d3.select('#start').attr('fill', 'none');
             }
-            // d3.select('#search_ring').attr('display', 'none');
             // Calculations done in SHOW_TARTETS phase
         } else if (game_phase == SHOW_TARGETS) {
             d3.select('#cursor').attr('display', 'none');
@@ -626,7 +666,6 @@ function gameSetup(data) {
             }
 
             // Displaying the start circle and trial count 
-            // d3.select('#search_ring').attr('display', 'block').attr('r', r);
             d3.select('#start').attr('display', 'block');
             d3.select('#trialcount').attr('display', 'block');
 
@@ -639,7 +678,6 @@ function gameSetup(data) {
             }
             // Displaying the cursor during MOVING if targetfile indicates so for the reach
         } else if (game_phase == MOVING) {
-            // d3.select('#search_ring').attr('display', 'none');
             if (online_fb[trial] || clamped_fb[trial]) {
                 d3.select('#cursor').attr('cx', cursor_x).attr('cy', cursor_y).attr('display', 'block');
             } else {
@@ -699,9 +737,12 @@ function gameSetup(data) {
             search_phase();
         } else if (game_phase == BETWEEN_BLOCKS && event.keyCode == SPACE_BAR && (bb_mess == 3 || bb_mess == 6)) {
             search_phase();
+        } else if (game_phase != BETWEEN_BLOCKS) {
+            // Do nothing
         } else {
             console.log("premature end");
             console.log(bb_mess);
+            document.exitPointerLock();
             badGame(); // Premature exit game if failed attention check
         }
     }
@@ -722,7 +763,6 @@ function gameSetup(data) {
         d3.select('#start').attr('display', 'block').attr('fill', 'none');
         d3.select('#target').attr('display', 'none').attr('fill', 'blue');
         d3.select('#cursor').attr('display', 'none');
-        // d3.select('#search_ring').attr('display', 'block').attr('r', r);
         d3.select('#message-line-1').attr('display', 'none');
         d3.select('#message-line-2').attr('display', 'none');
         d3.select('#message-line-3').attr('display', 'none');
@@ -871,11 +911,11 @@ function gameSetup(data) {
         d3.select('#target').attr('display', 'none');
         d3.select('#cursor').attr('display', 'none');
         target_invisible = true; // for clicking, currently not employed
+        moveCursor(); // Teleport cursor back to center
 
         // Checks whether the experiment is complete, if not continues to next trial
         if (trial == num_trials) {
-            $(document).off("keydown");
-            $(document).off("mousemove");
+            document.exitPointerLock();
             endGame();
         } else if (bb_mess || counter == 1) {
             console.log(bb_mess);
@@ -906,8 +946,8 @@ function startGame() {
     });
 }
 
-// Function that allows for the premature end of a game
-function badGame() {
+// Helper function to end the game regardless good or bad
+function helpEnd() {
     closeFullScreen();
     $('html').css('cursor', 'auto');
     $('body').css('cursor', 'auto');
@@ -915,7 +955,6 @@ function badGame() {
     $('html').css('background-color', 'white');
 
     d3.select('#start').attr('display', 'none');
-    // d3.select('#search_ring').attr('display', 'none');
     d3.select('#target').attr('display', 'none');
     d3.select('#cursor').attr('display', 'none');
     d3.select('#message-line-1').attr('display', 'none');
@@ -928,34 +967,16 @@ function badGame() {
     d3.select('#trialcount').attr('display', 'none');
 
     recordTrialSubj(trialcollection, subjTrials);
-    createSubject(subjectcollection, subject);
+}
+// Function that allows for the premature end of a game
+function badGame() {
+    helpEnd();
     show('container-failed', 'container-exp');
-
 }
 
 // Function that ends the game appropriately after the experiment has been completed
 function endGame() {
-    closeFullScreen();
-    $('html').css('cursor', 'auto');
-    $('body').css('cursor', 'auto');
-    $('body').css('background-color', 'white');
-    $('html').css('background-color', 'white');
-
-    d3.select('#start').attr('display', 'none');
-    // d3.select('#search_ring').attr('display', 'none');
-    d3.select('#target').attr('display', 'none');
-    d3.select('#cursor').attr('display', 'none');
-    d3.select('#message-line-1').attr('display', 'none');
-    d3.select('#message-line-2').attr('display', 'none');
-    d3.select('#message-line-3').attr('display', 'none');
-    d3.select('#message-line-4').attr('display', 'none');
-    d3.select('#too_slow_message').attr('display', 'none');
-    d3.select('#search_too_slow').attr('display', 'none');
-    // d3.select('#encouragement').attr('display', 'none');
-    d3.select('#countdown').attr('display', 'none');
-    d3.select('#trialcount').attr('display', 'none');
-
-    recordTrialSubj(trialcollection, subjTrials);
+    helpEnd();
     show('container-not-an-ad', 'container-exp');
 
 }

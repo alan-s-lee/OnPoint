@@ -90,7 +90,41 @@
             <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-consent', 'container-instructions1');">
             <span class="glyphicon glyphicon-arrow-left"></span> Back 
             </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-instructions2', 'container-instructions1');">
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-dpi', 'container-instructions1');">
+            <span class="glyphicon glyphicon-arrow-right"></span> Next
+            </button>
+        </center>
+    </div>
+
+    <!-- Instructions to measure DPI
+        **TODO** To integrate section, modify the "onClick" method in the previous segment as well as TODO comments in index.js-->
+    <div id="container-dpi" style="display:none">
+        <h1>What Is DPI?</h1>
+        <hr>
+        <div class="instructions well">
+            <p>
+                We will be measuring the Dots per Inch (DPI) of your mouse, this will help us better understand your results given your mouse sensitivity settings. To measure your DPI, please follow the instructions on this <a href="https://www.mouse-sensitivity.com/dpianalyzer/"
+                    target="_blank"> website</a>. You may also refer to the instructions below for better understanding.
+            </p>
+            <p style="color:red">
+                1. Physically mark how far you will be moving on your mouse or trackpad in inches, and input that into "Target distance".
+                <br> 2. Set "Units" to Inches and Axis to "X+".
+                <br> 3. Using your mouse, drag the red circle on ruler at the bottom of the website the same distance you have marked in step 1. Make sure you are dragging to the circle to the right side.
+                <br> 4. Record the number shown for "Actual DPI" and input that in the following text box.
+            </p>
+        </div>
+        <form id="dpiform">
+            <div class="questions" id="dpi">
+                Please input the "Actual DPI" number here:
+                <input id="dpi" type="text" name="dpi" value="">
+            </div>
+        </form>
+        <hr>
+        <center>
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-instructions1', 'container-dpi');">
+            <span class="glyphicon glyphicon-arrow-left"></span> Back 
+            </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary btn-lg" onClick="return saveDPI();">
             <span class="glyphicon glyphicon-arrow-right"></span> Next
             </button>
         </center>
@@ -121,13 +155,10 @@
                     </div>
                 </center>
             </div>
-            <script type="text/javascript">
-                //console.log(psiTurk.getInstructionIndicator())
-            </script>
         </div>
         <hr>
         <center>
-            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-instructions1', 'container-instructions2');">
+            <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-dpi', 'container-instructions2');">
             <span class="glyphicon glyphicon-arrow-left"></span> Back 
             </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" class="btn btn-primary btn-lg" onClick="return show('container-info', 'container-instructions2');">
