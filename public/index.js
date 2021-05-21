@@ -9,7 +9,7 @@ Remember to update necessary fields before starting the game. All fields that re
 
 // Set to 'true' if you wish to only test the front-end (will not access databases)
 // **TODO** Make sure this is set to false before deploying!
-const noSave = false;
+const noSave = true;
 
 
 var fileName;
@@ -255,6 +255,9 @@ var bb_counter;
 var target_invisible;
 var cursor_show;
 
+// Variables to track screen size
+var prev_height;
+var prev_width;
 
 // Function that sets up the game 
 // All game functions are defined within this main function, treat as "main"
@@ -285,7 +288,8 @@ function gameSetup(data) {
     // Getting the screen resolution
     screen_height = window.screen.availHeight;
     screen_width = window.screen.availWidth;
-
+    prev_height = screen_height;
+    prev_width = screen_width;
     // Experiment parameters, subject_ID is no obsolete
     experiment_ID = "test"; // **TODO** Update experiment_ID to label your experiments
     subject_ID = Math.floor(Math.random() * 10000000000);
@@ -502,7 +506,9 @@ function gameSetup(data) {
     document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;
     document.addEventListener('pointerlockchange', lockChangeAlert, false);
     document.addEventListener('mozpointerlockchange', lockChangeAlert, false);
-
+    window.addEventListener('resize', monitorWindow, false);
+    document.addEventListener('click', setPointerLock, false);
+    // Function to monitor changes in pointer lock
     function lockChangeAlert() {
         if (document.pointerLockElement === stage ||
             document.mozPointerLockElement === stage) {
@@ -515,9 +521,26 @@ function gameSetup(data) {
             document.removeEventListener('keydown', advance_block, false);
         }
     }
-    console.log("Attempted to lock pointer");
-    stage.requestPointerLock();
 
+    // Function to set pointer lock and log it
+    function setPointerLock() {
+        console.log("Attempted to lock pointer");
+        stage.requestPointerLock();
+    }
+    setPointerLock();
+
+    // Function to monitor changes in screen size;
+    function monitorWindow(event) {
+        var prev_size = prev_width * prev_height;
+        var curr_size = window.innerHeight * window.innerWidth;
+        console.log("prev size: " + prev_size + " curr size: " + curr_size);
+        if (prev_size > curr_size) {
+            alert("Please enter full screen and click your mouse to continue the experiment!");
+        }
+        prev_width = window.innerWidth;
+        prev_height = window.innerHeight;
+        return;
+    }
     /*****************
      * Task Variables *
      *****************/
@@ -597,6 +620,18 @@ function gameSetup(data) {
         event = event || window.event;
         hand_x += event.movementX;
         hand_y += event.movementY;
+
+        // Ensure we do not exceed screen boundaries
+        if (hand_x > screen_width) {
+            hand_x = screen_width;
+        } else if (hand_x < 0) {
+            hand_x = 0;
+        }
+        if (hand_y > screen_height) {
+            hand_y = screen_height;
+        } else if (hand_y < 0) {
+            hand_y = 0;
+        }
         // Update radius between start and hand location
         r = Math.sqrt(Math.pow(start_x - hand_x, 2) + Math.pow(start_y - hand_y, 2));
 
