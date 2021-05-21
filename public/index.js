@@ -777,6 +777,8 @@ function gameSetup(data) {
         } else {
             console.log("premature end");
             console.log(bb_mess);
+            window.removeEventListener('resize', monitorWindow, false);
+            document.removeEventListener('click', setPointerLock, false);
             document.exitPointerLock();
             badGame(); // Premature exit game if failed attention check
         }
@@ -950,6 +952,8 @@ function gameSetup(data) {
 
         // Checks whether the experiment is complete, if not continues to next trial
         if (trial == num_trials) {
+            window.removeEventListener('resize', monitorWindow, false);
+            document.removeEventListener('click', setPointerLock, false);
             document.exitPointerLock();
             endGame();
         } else if (bb_mess || counter == 1) {
