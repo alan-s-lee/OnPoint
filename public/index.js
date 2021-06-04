@@ -350,6 +350,7 @@ function gameSetup(data) {
     cursor_radius = Math.round(target_dist * 1.75 * 1.5 / 80.0);
     cursor_color = 'white';
 
+
     // Function to move cursor to random location near center
     function moveCursor() {
         var off_x = Math.random() * start_radius + start_radius;
@@ -366,8 +367,11 @@ function gameSetup(data) {
         } else {
             hand_y = start_y + off_y;
         }
+        search_phase();
     }
-    moveCursor();
+
+
+
     console.log("Initial X: " + hand_x + " Initial Y: " + hand_y);
     // Drawing the displayed cursor 
     svgContainer.append('circle')
@@ -535,7 +539,7 @@ function gameSetup(data) {
         var curr_size = window.innerHeight * window.innerWidth;
         console.log("prev size: " + prev_size + " curr size: " + curr_size);
         if (prev_size > curr_size) {
-            alert("Please enter full screen and click your mouse to continue the experiment!");
+            alert("Please enter full screen and click your mouse to continue the experiment! (Shortcut for Mac users: Command + Control + F. Shortcut for PC users: F11) ");
         }
         prev_width = window.innerWidth;
         prev_height = window.innerHeight;
@@ -605,6 +609,10 @@ function gameSetup(data) {
     target_invisible = true; // for clicking to see target
     cursor_show = false;
 
+    if(trial == 0){
+        moveCursor(); 
+    }
+
     /********************
     * Update Cursor Function*
     * This function gets called every time a participant moves their mouse.*
@@ -637,6 +645,8 @@ function gameSetup(data) {
 
         // Update hand angle
         hand_angle = Math.atan2(start_y - hand_y, hand_x - start_x) * 180 / Math.PI;
+
+   
 
         // Calculations done in the MOVING phase
         if (game_phase == MOVING) {
@@ -686,7 +696,7 @@ function gameSetup(data) {
             d3.select('#start').attr('fill', 'white');
             // Flag cursor to display if within certain distance to center
         } else if (game_phase == SEARCHING) {
-            if (r <= target_dist * 0.75) {
+            if (r <= target_dist * 1) {
                 cursor_show = true;
             }
 
@@ -847,7 +857,8 @@ function gameSetup(data) {
         begin = new Date();
 
         // Start circle disappears
-        d3.select('#start').attr('display', 'none');
+        //d3.select('#start').attr('display', 'block');
+        d3.select('#start').attr('fill', 'none');
     }
 
     // Phase where users have finished their reach and receive feedback
@@ -857,6 +868,7 @@ function gameSetup(data) {
         // Record movement time as time spent reaching before intersecting target circle
         // Can choose to add audio in later if necessary
         mt = new Date() - begin;
+        d3.select('#cursor').attr('display', 'none');
 
         if (mt > too_slow_time) {
             // d3.select('#target').attr('fill', 'red');
@@ -864,6 +876,7 @@ function gameSetup(data) {
             d3.select('#target').attr('display', 'none');
             d3.select('#cursor').attr('display', 'none');
             d3.select('#too_slow_message').attr('display', 'block');
+            d3.select('#start').attr('display', 'none');
             reach_feedback = "too_slow";
         } else {
             // d3.select('#target').attr('fill', 'green');
@@ -948,8 +961,9 @@ function gameSetup(data) {
         d3.select('#target').attr('display', 'none');
         d3.select('#cursor').attr('display', 'none');
         target_invisible = true; // for clicking, currently not employed
-        moveCursor(); // Teleport cursor back to center
+         // Teleport cursor back to center
 
+        
         // Checks whether the experiment is complete, if not continues to next trial
         if (trial == num_trials) {
             window.removeEventListener('resize', monitorWindow, false);
@@ -965,10 +979,12 @@ function gameSetup(data) {
             d3.select('#message-line-4').attr('display', 'block').text(messages[bb_mess][3]);
             d3.select('#too_slow_message').attr('display', 'none');
             d3.select('#trialcount').attr('display', 'block');
+            d3.select('#start').attr('display', 'none');
             bb_counter += 1;
         } else {
             // Start next trial
-            search_phase();
+            setTimeout(moveCursor, 750); 
+    
         }
     }
 }
