@@ -367,7 +367,6 @@ function gameSetup(data) {
         } else {
             hand_y = start_y + off_y;
         }
-        search_phase();
     }
 
 
@@ -609,8 +608,8 @@ function gameSetup(data) {
     target_invisible = true; // for clicking to see target
     cursor_show = false;
 
-    if(trial == 0){
-        moveCursor(); 
+    if (trial == 0) {
+        moveCursor();
     }
 
     /********************
@@ -645,8 +644,6 @@ function gameSetup(data) {
 
         // Update hand angle
         hand_angle = Math.atan2(start_y - hand_y, hand_x - start_x) * 180 / Math.PI;
-
-   
 
         // Calculations done in the MOVING phase
         if (game_phase == MOVING) {
@@ -961,9 +958,8 @@ function gameSetup(data) {
         d3.select('#target').attr('display', 'none');
         d3.select('#cursor').attr('display', 'none');
         target_invisible = true; // for clicking, currently not employed
-         // Teleport cursor back to center
-
-        
+        // Teleport cursor back to center
+        setTimeout(moveCursor, 750);
         // Checks whether the experiment is complete, if not continues to next trial
         if (trial == num_trials) {
             window.removeEventListener('resize', monitorWindow, false);
@@ -983,8 +979,8 @@ function gameSetup(data) {
             bb_counter += 1;
         } else {
             // Start next trial
-            setTimeout(moveCursor, 750); 
-    
+            search_phase();
+
         }
     }
 }
