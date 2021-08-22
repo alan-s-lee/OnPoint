@@ -34,4 +34,5 @@ J.S.T was funded by a 2018 Florence P. Kendall Scholarship from the Foundation f
 
 ## How to cite this?
 
-Tsay, J. S., Lee, A. S., Ivry, R. B., & Avraham, G. (2021). Moving outside the lab: The viability of conducting sensorimotor learning studies online. In Cold Spring Harbor Laboratory (p. 2021.01.30.181370). https://doi.org/10.1101/2021.01.30.181370
+Tsay, J. S., Ivry, R. B., Lee, A., & Avraham, G. (2021). Moving outside the lab: The viability of conducting sensorimotor learning studies online. Neurons, Behavior, Data Analysis, and Theory. https://doi.org/10.51628/001c.26985
+
