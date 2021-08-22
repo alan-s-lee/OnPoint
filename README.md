@@ -36,3 +36,11 @@ J.S.T was funded by a 2018 Florence P. Kendall Scholarship from the Foundation f
 
 Tsay, J. S., Ivry, R. B., Lee, A., & Avraham, G. (2021). Moving outside the lab: The viability of conducting sensorimotor learning studies online. Neurons, Behavior, Data Analysis, and Theory. https://doi.org/10.51628/001c.26985
 
+## Other Research using OnPoint
+
+Avraham, G., Ryan Morehead, J., Kim, H. E., & Ivry, R. B. (2021). Reexposure to a sensorimotor perturbation produces opposite effects on explicit and implicit learning processes. PLoS Biology, 19(3), e3001147. (See supplemental figure, S2)
+
+
+
+
+
