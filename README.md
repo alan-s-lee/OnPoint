@@ -40,7 +40,7 @@ Tsay, J. S., Ivry, R. B., Lee, A., & Avraham, G. (2021). Moving outside the lab:
 
 Avraham, G., Ryan Morehead, J., Kim, H. E., & Ivry, R. B. (2021). Reexposure to a sensorimotor perturbation produces opposite effects on explicit and implicit learning processes. PLoS Biology, 19(3), e3001147. (See supplemental figure, S2)
 
-
+Shyr, M. C., & Joshi, S. S. (2021). Validation of the Bayesian sensory uncertainty model of motor adaptation with a remote experimental paradigm. 2021 IEEE 2nd International Conference on Human-Machine Systems (ICHMS), 
 
 
 
