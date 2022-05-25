@@ -38,6 +38,10 @@ Tsay, J. S., Ivry, R. B., Lee, A., & Avraham, G. (2021). Moving outside the lab:
 
 ## Other Research using OnPoint
 
+Tsay, J. S., Kim, H. E., Saxena, A., Parvin, D. E., Verstynen, T., & Ivry, R. B. (2022). Dissociable use-dependent processes for volitional goal-directed reaching. Proceedings. Biological Sciences, 289(1973), 20220415. [supplementary experiment]
+
+Tsay, J. S., Haith, A. M., Ivry, R. B., & Kim, H. E. (2022). Interactions between sensory prediction error and task error during implicit motor learning. PLoS Computational Biology, 18(3), e1010005.
+
 Avraham, G., Ryan Morehead, J., Kim, H. E., & Ivry, R. B. (2021). Reexposure to a sensorimotor perturbation produces opposite effects on explicit and implicit learning processes. PLoS Biology, 19(3), e3001147. (See supplemental figure, S2)
 
 Shyr, M. C., & Joshi, S. S. (2021). Validation of the Bayesian sensory uncertainty model of motor adaptation with a remote experimental paradigm. 2021 IEEE 2nd International Conference on Human-Machine Systems (ICHMS), 
