@@ -38,6 +38,10 @@ Tsay, J. S., Ivry, R. B., Lee, A., & Avraham, G. (2021). Moving outside the lab:
 
 ## Other Research using OnPoint
 
+Tsay, J.S., Asmerian, H., Germine, L.T. et al. Large-scale citizen science reveals predictors of sensorimotor adaptation. Nat Hum Behav 8, 510–525 (2024). https://doi.org/10.1038/s41562-023-01798-0
+
+Wang, T., Avraham, G., Tsay, J. S., Thummala, T., & Ivry, R. B. (2024). Advanced feedback enhances sensorimotor adaptation. Current Biology: CB. https://doi.org/10.1016/j.cub.2024.01.073
+
 Tsay, J. S., Kim, H. E., Saxena, A., Parvin, D. E., Verstynen, T., & Ivry, R. B. (2022). Dissociable use-dependent processes for volitional goal-directed reaching. Proceedings. Biological Sciences, 289(1973), 20220415. [supplementary experiment]
 
 Tsay, J. S., Haith, A. M., Ivry, R. B., & Kim, H. E. (2022). Interactions between sensory prediction error and task error during implicit motor learning. PLoS Computational Biology, 18(3), e1010005.
